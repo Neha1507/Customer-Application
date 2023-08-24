@@ -4,10 +4,10 @@
 @RequestMapping("/api/products")
 public class ProductController {
 
-    @Autowired
+    //Autowired
     private ProductService productService;
 
-    @GetMapping
+    //GetMapping
     public ResponseEntity<List<ProductDTO>> getAllAvailableProducts(@RequestParam String category,
                                                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime,
                                                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endTime) {
@@ -19,7 +19,7 @@ public class ProductController {
 //Service
 public class ProductService {
 
-    @Autowired
+    //Autowired
     private ProductRepository productRepository;
 
     public List<ProductDTO> getAvailableProducts(String category, LocalDateTime startTime, LocalDateTime endTime) {
@@ -50,10 +50,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 @RequestMapping("/api/bookings")
 public class BookingController {
 
-    @Autowired
+    //Autowired
     private BookingService bookingService;
 
-    @PostMapping
+    //PostMapping
     public ResponseEntity<String> createBooking(@RequestBody BookingRequest bookingRequest) {
         if (bookingService.isProductAvailable(bookingRequest.getProductId(), bookingRequest.getStartTime(), bookingRequest.getEndTime())) {
             bookingService.createBooking(bookingRequest);
@@ -67,7 +67,7 @@ public class BookingController {
 //Service
 public class BookingService {
 
-    @Autowired
+    //Autowired
     private BookingRepository bookingRepository;
 
     public boolean isProductAvailable(Long productId, LocalDateTime startTime, LocalDateTime endTime) {
